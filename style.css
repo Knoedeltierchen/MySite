@@ -1,2 +1,247 @@
-body { max-width: 40rem; margin: 2rem auto; font-family: sans-serif; padding: 0 1rem; }
-img { max-width: 100%; height: auto; }
+/* style.css
+   Aufbau: 1 Farben und Schriften, 2 Grundlagen, 3 Kopfzeile und Menü,
+           4 Inhalt, 5 Fußzeile, 6 Größere Bildschirme */
+
+
+/* 1. Farben und Schriften
+   Hier änderst du das Aussehen der ganzen Seite an einer Stelle. */
+:root {
+  --bg: #ffffff;
+  --flaeche: #f1f3f5;
+  --text: #1c1c1c;
+  --gedaempft: #55595e;
+  --linie: #d5d9de;
+  --akzent: #1a56b0;
+  --strich: #000000;            /* Farbe der drei Menü-Striche */
+
+  --schrift-text: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --schrift-titel: Georgia, "Times New Roman", serif;
+
+  color-scheme: light dark;
+}
+
+/* Dunkles Design, wenn das Gerät auf Dark Mode steht.
+   Die Menü-Striche werden dann weiß, sonst wären sie auf dunklem Grund unsichtbar. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121417;
+    --flaeche: #1c2025;
+    --text: #ececec;
+    --gedaempft: #a3a9b0;
+    --linie: #343a41;
+    --akzent: #7fb0ff;
+    --strich: #ffffff;
+  }
+}
+
+
+/* 2. Grundlagen */
+*, *::before, *::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: var(--schrift-text);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Bilder schrumpfen mit, wenn der Platz knapp wird */
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--akzent); text-underline-offset: 0.15em; }
+
+h1, h2, h3 { font-family: var(--schrift-titel); line-height: 1.2; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 1.5rem 0 1rem; }
+h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
+
+/* Sichtbarer Rahmen, wenn man mit der Tastatur navigiert */
+:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
+
+/* "Zum Inhalt springen": erscheint nur, wenn man mit Tab dorthin gelangt */
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.5rem 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--akzent);
+  border-radius: 0.5rem;
+}
+.skip:focus { top: 1rem; }
+
+
+/* 3. Kopfzeile und Hamburger-Menü */
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--linie);
+}
+
+.logo {
+  font-family: var(--schrift-titel);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menue { position: relative; }
+
+/* Der Knopf mit den drei Strichen (44 px groß, gut antippbar) */
+.menue-knopf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.menue-knopf:hover { background: var(--flaeche); }
+
+.strich {
+  display: block;
+  width: 1.5rem;
+  height: 3px;
+  background: var(--strich);
+  border-radius: 2px;
+}
+
+/* Die aufklappende Liste */
+.menue-liste {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 13rem;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--linie);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.menue-eintrag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text);
+  background: none;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.menue-eintrag:hover { background: var(--flaeche); }
+.menue-eintrag[aria-current="page"] { font-weight: 600; }
+
+/* Icons: einfache Linien-Symbole, übernehmen die Textfarbe */
+.icon {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon .punkt { fill: currentColor; stroke: none; }
+
+.hinweis {
+  margin: 0.25rem 0.75rem 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gedaempft);
+}
+
+
+/* 4. Inhalt */
+main {
+  max-width: 45rem;          /* Obergrenze: auf kleinen Bildschirmen wird es schmaler */
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.lead { font-size: 1.25rem; color: var(--gedaempft); }
+
+/* Bilder-Raster: so viele Spalten wie Platz ist, jede mindestens 13rem breit.
+   Am Handy stehen die Bilder untereinander, am PC nebeneinander. */
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1.25rem;
+}
+.galerie figure { margin: 0; }
+.galerie img { border-radius: 0.5rem; }
+.galerie figcaption { margin-top: 0.5rem; font-size: 0.95rem; color: var(--gedaempft); }
+
+/* Liste auf der Spiele-Seite */
+.spiele { margin: 2rem 0 0; padding: 0; list-style: none; }
+.spiele li { padding: 0.5rem 0 1.5rem; border-top: 1px solid var(--linie); }
+.spiele h2 { margin: 1rem 0 0.5rem; }
+.spiele p { margin: 0 0 0.75rem; }
+
+/* Hinweiskasten für Platzhalter-Seiten (Impressum, Datenschutz) */
+.achtung {
+  padding: 1rem;
+  background: var(--flaeche);
+  border-left: 4px solid var(--akzent);
+  border-radius: 0.25rem;
+}
+
+
+/* 5. Fußzeile */
+.fuss {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2.5rem;
+  font-size: 1rem;
+  color: var(--gedaempft);
+  border-top: 1px solid var(--linie);
+}
+.fuss p { margin: 0; }
+.fuss nav { display: flex; gap: 1.5rem; }
+.fuss a { display: inline-block; padding: 0.5rem 0; color: inherit; }
+
+
+/* 6. Größere Bildschirme (Media Query: ab 50rem, etwa 800 px Fensterbreite) */
+@media (min-width: 50rem) {
+  body { font-size: 1.25rem; }
+  .kopf { padding: 0.75rem 2rem; }
+  main { padding: 2.5rem 2rem 4rem; }
+  .fuss { padding: 1.5rem 2rem 2.5rem; }
+}
+
+/* Wer Animationen abgeschaltet hat, bekommt keine */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

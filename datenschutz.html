@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Titel und Beschreibung erscheinen in Suchergebnissen und im Browser-Tab -->
+  <title>Datenschutz – PLATZHALTER Seitenname</title>
+  <meta name="description" content="Informationen zum Datenschutz.">
+
+  <!-- PLATZHALTER: Ersetze deine-domain.de durch deine echte Adresse -->
+  <link rel="canonical" href="https://deine-domain.de/datenschutz.html">
+
+  <!-- Vorschau, wenn jemand den Link teilt (Messenger, soziale Netzwerke) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Datenschutz – PLATZHALTER Seitenname">
+  <meta property="og:description" content="Informationen zum Datenschutz.">
+  <!-- Optional: <meta property="og:image" content="https://deine-domain.de/bilder/vorschau.jpg"> -->
+
+  <!-- Farbe der Browser-Leiste am Handy -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="kopf">
+    <a class="logo" href="index.html">PLATZHALTER Seitenname</a>
+
+    <!-- Hamburger-Menü: Die drei Striche öffnen die Dropdown-Liste (Logik in script.js) -->
+    <nav class="menue" aria-label="Hauptmenü">
+      <button class="menue-knopf" id="menue-knopf" type="button"
+              aria-expanded="false" aria-controls="menue-liste" aria-label="Menü öffnen">
+        <span class="strich"></span>
+        <span class="strich"></span>
+        <span class="strich"></span>
+      </button>
+
+      <ul class="menue-liste" id="menue-liste" hidden>
+        <li>
+          <!-- PLATZHALTER: Die Sprachauswahl ist noch ohne Funktion (siehe script.js) -->
+          <button class="menue-eintrag" id="sprache-knopf" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3 12h18"/>
+              <path d="M12 3c2.6 2.5 4 5.6 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.6-4-9s1.4-6.5 4-9z"/>
+            </svg>
+            <span>Language</span>
+          </button>
+        </li>
+        <li>
+          <a class="menue-eintrag" href="spiele.html">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="2" y="7" width="20" height="11" rx="5.5"/>
+              <path d="M7 10.5v4M5 12.5h4"/>
+              <circle class="punkt" cx="15.5" cy="11.5" r="1"/>
+              <circle class="punkt" cx="18" cy="13.8" r="1"/>
+            </svg>
+            <span>Spiele</span>
+          </a>
+        </li>
+        <li class="hinweis" id="sprach-hinweis" role="status" hidden>
+          Die Sprachauswahl ist noch nicht eingebaut.
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <h1>Datenschutz</h1>
+    <p class="achtung">
+      Dieser Text ist nur ein Platzhalter und keine Rechtsberatung. Ob und was bei deiner Seite
+      hineingehört, hängt vom Einzelfall ab. Lass dich dazu beraten oder informiere dich bei
+      einer vertrauenswürdigen Stelle, bevor du die Seite veröffentlichst.
+    </p>
+
+    <h2>PLATZHALTER: Verantwortlicher</h2>
+    <p>PLATZHALTER: Name und Kontakt (wie im Impressum)</p>
+
+    <h2>PLATZHALTER: Hosting</h2>
+    <p>PLATZHALTER: Hier steht, wo die Seite gehostet wird (zum Beispiel GitHub Pages) und welche Daten dabei anfallen.</p>
+
+    <h2>PLATZHALTER: Weitere Angaben</h2>
+    <p>PLATZHALTER: Zum Beispiel Kontaktaufnahme, Cookies, eingebettete Inhalte, deine Rechte als Besucher.</p>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 PLATZHALTER Dein Name</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+</body>
+</html>
