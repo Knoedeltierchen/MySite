@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#dfe3e8"/>
+  <circle cx="620" cy="180" r="50" fill="#c4cad2"/>
+  <path d="M0 600 L250 340 L420 490 L570 390 L800 600 Z" fill="#c4cad2"/>
+  <text x="40" y="100" font-size="36" font-family="Arial, sans-serif" fill="#55595e">Platzhalter 1 (800 x 600)</text>
+</svg>
